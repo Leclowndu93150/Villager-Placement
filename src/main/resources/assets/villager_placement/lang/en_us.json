@@ -1,0 +1,20 @@
+{
+  "itemGroup.villager_placement": "Villager Placement",
+  "item.villager_placement.villager_wand": "Villager Placement Wand",
+
+  "villager_placement.wand.position_set": "Position set to [%d, %d, %d]",
+  "villager_placement.wand.invalid_block": "Cannot select this block - must be a solid block!",
+  "villager_placement.wand.no_position": "No position selected! Shift+right-click a block first.",
+  "villager_placement.wand.villager_assigned": "Villager assigned to [%d, %d, %d]",
+  "villager_placement.wand.villager_freed": "Villager freed from position",
+  "villager_placement.wand.selection_cleared": "Selection cleared",
+
+  "villager_placement.wand.tooltip.selected": "Selected: [%d, %d, %d]",
+  "villager_placement.wand.tooltip.no_selection": "No position selected",
+  "villager_placement.wand.tooltip.hold_shift": "Hold [Shift] for instructions",
+  "villager_placement.wand.tooltip.instruction1": "Shift+Right-click block: Select position",
+  "villager_placement.wand.tooltip.instruction2": "Shift+Right-click villager: Assign to position",
+  "villager_placement.wand.tooltip.instruction3": "Shift+Right-click villager (empty): Free villager",
+  "villager_placement.wand.tooltip.instruction4": "Shift+Right-click air: Clear selection",
+  "villager_placement.wand.tooltip.note": "Villager will stay at position when idle"
+}
