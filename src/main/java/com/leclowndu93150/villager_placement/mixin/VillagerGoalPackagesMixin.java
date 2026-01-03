@@ -1,7 +1,7 @@
 package com.leclowndu93150.villager_placement.mixin;
 
 import com.google.common.collect.ImmutableList;
-import com.leclowndu93150.villager_placement.VillagerPlacement;
+import com.leclowndu93150.villager_placement.ai.ReturnToIdlePositionBehavior;
 import com.leclowndu93150.villager_placement.ai.StayAtIdlePositionBehavior;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.entity.ai.behavior.BehaviorControl;
@@ -24,17 +24,51 @@ public class VillagerGoalPackagesMixin {
             at = @At("RETURN"),
             cancellable = true
     )
-    private static void villagerplacement$injectIdlePositionBehavior(
+    private static void villagerplacement$injectIdleBehavior(
             VillagerProfession profession,
             float speed,
             CallbackInfoReturnable<ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>>> cir
     ) {
-
         ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>> original = cir.getReturnValue();
-
         List<Pair<Integer, ? extends BehaviorControl<? super Villager>>> modifiedList = new ArrayList<>(original);
 
         modifiedList.add(0, Pair.of(0, new StayAtIdlePositionBehavior()));
+
+        cir.setReturnValue(ImmutableList.copyOf(modifiedList));
+    }
+
+    @Inject(
+            method = "getWorkPackage",
+            at = @At("RETURN"),
+            cancellable = true
+    )
+    private static void villagerplacement$injectWorkBehavior(
+            VillagerProfession profession,
+            float speed,
+            CallbackInfoReturnable<ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>>> cir
+    ) {
+        ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>> original = cir.getReturnValue();
+        List<Pair<Integer, ? extends BehaviorControl<? super Villager>>> modifiedList = new ArrayList<>(original);
+
+        modifiedList.add(0, Pair.of(1, new ReturnToIdlePositionBehavior()));
+
+        cir.setReturnValue(ImmutableList.copyOf(modifiedList));
+    }
+
+    @Inject(
+            method = "getMeetPackage",
+            at = @At("RETURN"),
+            cancellable = true
+    )
+    private static void villagerplacement$injectMeetBehavior(
+            VillagerProfession profession,
+            float speed,
+            CallbackInfoReturnable<ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>>> cir
+    ) {
+        ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>> original = cir.getReturnValue();
+        List<Pair<Integer, ? extends BehaviorControl<? super Villager>>> modifiedList = new ArrayList<>(original);
+
+        modifiedList.add(0, Pair.of(1, new ReturnToIdlePositionBehavior()));
 
         cir.setReturnValue(ImmutableList.copyOf(modifiedList));
     }

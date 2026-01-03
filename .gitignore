@@ -4,7 +4,7 @@
 *.iml
 *.ipr
 *.iws
-
+Minecraft-Source-1.21.1
 # IntelliJ
 out/
 # mpeltonen/sbt-idea plugin
